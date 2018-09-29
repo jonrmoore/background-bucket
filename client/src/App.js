@@ -10,7 +10,8 @@ class App extends Component {
   componentDidMount() {
     fetch("http://localhost:3001/awards")
       .then(res => res.json())
-      .then(awards => this.setState(state => ({ 
+      .then(awards => [awards.winner, ...awards.nominees])
+      .then(awards => this.setState(state => ({
         ...state,
         awards
       })))
